@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <string-array name="rate_bg">
+        <item>#24c6d5</item>
+        <item>#57dd86</item>
+        <item>#fcba59</item>
+     </string-array>
+</resources>

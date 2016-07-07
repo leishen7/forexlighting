@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+
+    <item android:id="@+id/wsj"
+        android:title="华尔街"
+        app:showAsAction="always"
+        android:orderInCategory="1"/>
+    <item android:id="@+id/news"
+        android:title="财经网"
+        app:showAsAction="always"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/analysis"
+        android:title="汇市"
+        app:showAsAction="always"
+        android:orderInCategory="3"/>
+    <item android:id="@+id/gold"
+        android:title="黄金"
+        app:showAsAction="always"
+        android:orderInCategory="4"/>
+    <item android:id="@+id/future"
+        android:title="商品"
+        app:showAsAction="always"
+        android:orderInCategory="5"/>
+    <item android:id="@+id/marketwatch"
+        android:title="MarketWatch"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="6"/>
+    <item android:id="@+id/ForexLive"
+        android:title="ForexLive"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="7"/>
+    <item android:id="@+id/FxStreet"
+        android:title="FxStreet"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="8"/>
+</menu>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <TableRow>
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signalSide"
+            android:paddingLeft="2dp"/>
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signalSymbol"
+            android:paddingLeft="2dp"/>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signalEntryPrice"
+            android:paddingLeft="2dp"/>
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signalProfit"
+            android:paddingLeft="2dp"/>
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signalUserNickName"
+            android:paddingLeft="2dp"/>
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/reason"
+            android:paddingLeft="2dp"/>
+
+    </TableRow>
+    <TableRow>
+        <ImageView
+            android:id="@+id/signalChart"
+            android:paddingLeft="2dp"
+            android:layout_span="6"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+                android:layout_height="wrap_content"/>
+		</TableRow>
+</TableLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.nucome.app.forex.RecommendationActivity">
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="symbol:"
+        android:id="@+id/symbolView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="10"
+        android:id="@+id/recommendation_symbolEditText"
+        android:layout_toRightOf="@+id/symbolView"
+        android:contentDescription="symbol"
+        android:enabled="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="Symbol"
+        android:layout_alignBaseline="@+id/symbolView"/>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Side"
+        android:id="@+id/sideTextView"
+        android:layout_below="@+id/symbolView"
+        android:layout_alignLeft="@+id/symbolView"
+        android:layout_marginTop="16dp" />
+
+    <RadioGroup
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/symbolView"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:id="@+id/recommendation_radioGroup"
+        android:layout_toRightOf="@+id/sideTextView"
+        android:layout_alignRight="@+id/recommendation_effectiveDaysEditText"
+        android:layout_alignEnd="@+id/recommendation_effectiveDaysEditText">
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Buy"
+            android:id="@+id/radioButton"
+            android:layout_margin="0dp"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Sell"
+            android:id="@+id/radioButton2"
+            android:layout_gravity="center_horizontal"
+            android:checked="false" />
+    </RadioGroup>
+
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Effective Days:"
+        android:id="@+id/effectiveDaysLabel"
+        android:layout_below="@+id/sideTextView"
+        android:layout_alignLeft="@+id/sideTextView"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Effective days"
+        android:ems="10"
+        android:maxLines="1"
+        android:maxLength="3"
+        android:id="@+id/recommendation_effectiveDaysEditText"
+        android:layout_below="@+id/sideTextView"
+        android:layout_toRightOf="@+id/effectiveDaysLabel"
+        android:layout_alignBaseline="@+id/effectiveDaysLabel"
+        android:layout_alignRight="@+id/recommendation_symbolEditText"
+        android:layout_alignEnd="@+id/recommendation_symbolEditText" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recommend"
+        android:id="@+id/recommendation_Button"
+        android:layout_marginTop="157dp"
+        android:layout_below="@+id/recommendation_effectiveDaysEditText"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

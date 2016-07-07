@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.nucome.app.forex.UserInfoActivity">
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="User Id:"
+        android:id="@+id/userInfoUserIdView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="10"
+        android:id="@+id/userInfoUserIdEditText"
+        android:layout_toRightOf="@+id/userInfoUserIdView"
+        android:contentDescription="userId"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="User Id"
+        android:layout_alignBaseline="@+id/userInfoUserIdView"/>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="First Name:"
+        android:id="@+id/userInfoFirstNameLabel"
+        android:layout_below="@+id/userInfoUserIdView"
+        android:layout_alignLeft="@+id/userInfoUserIdView"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:enabled="false"
+        android:hint="@string/firstName"
+        android:ems="10"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:id="@+id/userInfoFirstNameEditText"
+        android:layout_below="@+id/userInfoUserIdView"
+        android:layout_toRightOf="@+id/userInfoFirstNameLabel"
+        android:layout_alignBaseline="@+id/userInfoFirstNameLabel"
+        />
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Last Name:"
+        android:id="@+id/userInfoLastNameLabel"
+        android:layout_below="@+id/userInfoFirstNameLabel"
+        android:layout_alignLeft="@+id/userInfoFirstNameLabel"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/lastName"
+        android:ems="10"
+        android:enabled="false"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:id="@+id/userInfoLastNameEditText"
+        android:layout_below="@+id/userInfoFirstNameLabel"
+        android:layout_toRightOf="@+id/userInfoLastNameLabel"
+        android:layout_alignBaseline="@+id/userInfoLastNameLabel"
+        />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Email:"
+        android:id="@+id/userInfoEmailLabel"
+        android:layout_below="@+id/userInfoLastNameLabel"
+        android:layout_alignLeft="@+id/userInfoLastNameLabel"
+        android:layout_marginTop="16dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"
+        android:ems="10"
+        android:maxLength="40"
+        android:maxLines="1"
+        android:enabled="false"
+        android:id="@+id/userInfoEmailEditText"
+        android:layout_below="@+id/userInfoLastNameLabel"
+        android:layout_toRightOf="@+id/userInfoEmailLabel"
+        android:layout_alignBaseline="@+id/userInfoEmailLabel" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Phone:"
+        android:id="@+id/userInfoPhoneLabel"
+        android:layout_below="@+id/userInfoEmailLabel"
+        android:layout_alignLeft="@+id/userInfoEmailLabel"
+        android:layout_marginTop="16dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:maxLines="1"
+        android:enabled="false"
+        android:maxLength="40"
+        android:hint="@string/phone"
+        android:id="@+id/userInfoPhoneEditText"
+        android:layout_below="@+id/userInfoEmailLabel"
+        android:layout_toRightOf="@+id/userInfoPhoneLabel"
+        android:layout_alignBaseline="@+id/userInfoPhoneLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finish"
+        android:id="@+id/userInfoFinish"
+        android:layout_below="@+id/userInfoPhoneLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+</RelativeLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.nucome.app.forex.RegisterActivity">
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="User Id:"
+        android:id="@+id/userIdView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="10"
+        android:id="@+id/userIdEditText"
+        android:layout_toRightOf="@+id/userIdView"
+        android:contentDescription="userId"
+        android:enabled="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="User Id"
+        android:layout_alignBaseline="@+id/userIdView"/>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Password:"
+        android:id="@+id/passwordTextView"
+        android:layout_below="@+id/userIdView"
+        android:layout_alignLeft="@+id/userIdView"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="@string/password"
+        android:id="@+id/passwordEditText"
+        android:layout_alignTop="@+id/passwordTextView"
+        android:layout_toRightOf="@+id/passwordTextView"
+        android:layout_alignBaseline="@+id/passwordTextView" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="First Name:"
+        android:id="@+id/firstNameLabel"
+        android:layout_below="@+id/passwordEditText"
+        android:layout_alignLeft="@+id/userIdView"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/firstName"
+        android:ems="10"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:id="@+id/firstNameEditText"
+        android:layout_below="@+id/passwordEditText"
+        android:layout_toRightOf="@+id/firstNameLabel"
+        android:layout_alignBaseline="@+id/firstNameLabel"
+        />
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Last Name:"
+        android:id="@+id/lastNameLabel"
+        android:layout_below="@+id/firstNameEditText"
+        android:layout_alignLeft="@+id/userIdView"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/lastName"
+        android:ems="10"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:id="@+id/lastNameEditText"
+        android:layout_below="@+id/firstNameEditText"
+        android:layout_toRightOf="@+id/lastNameLabel"
+        android:layout_alignBaseline="@+id/lastNameLabel"
+        />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Email:"
+        android:id="@+id/emailLabel"
+        android:layout_below="@+id/lastNameEditText"
+        android:layout_alignLeft="@+id/userIdView"
+        android:layout_marginTop="16dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"
+        android:ems="10"
+        android:maxLength="40"
+        android:maxLines="1"
+        android:id="@+id/emailEditText"
+        android:layout_below="@+id/lastNameEditText"
+        android:layout_toRightOf="@+id/emailLabel"
+        android:layout_alignBaseline="@+id/emailLabel" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Phone:"
+        android:id="@+id/phoneLabel"
+        android:layout_below="@+id/emailLabel"
+        android:layout_alignLeft="@+id/userIdView"
+        android:layout_marginTop="16dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:maxLines="1"
+        android:maxLength="40"
+        android:hint="@string/phone"
+        android:id="@+id/phoneEditText"
+        android:layout_below="@+id/emailEditText"
+        android:layout_alignLeft="@+id/emailEditText"
+        android:layout_toRightOf="@+id/phoneLabel"
+        android:layout_alignBaseline="@+id/phoneLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/submitRegister"
+        android:layout_below="@+id/phoneEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+</RelativeLayout>

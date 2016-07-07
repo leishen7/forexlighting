@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/news"
+        android:title="新闻"
+        app:showAsAction="always"
+        android:orderInCategory="1"/>
+
+    <item android:id="@+id/realTimeRate"
+        android:title="行情"
+        app:showAsAction="always"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/calendar"
+        android:title="财经日历"
+        app:showAsAction="always"
+        android:orderInCategory="3"/>
+
+    <item android:id="@+id/learning"
+        android:title="外汇学堂"
+        app:showAsAction="always"
+        android:orderInCategory="5"/>
+    <!--item android:id="@+id/tradeSignal"
+        android:title="推荐"
+        app:showAsAction="always"
+        android:orderInCategory="4"/-->
+    <item android:id="@+id/settints"
+        android:title="设置"
+        app:showAsAction="always"
+        android:orderInCategory="6"/>
+
+
+</menu>
+
