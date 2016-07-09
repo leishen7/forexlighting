@@ -17,7 +17,8 @@ import android.widget.Toast;
 public class OpenAccountActivity extends UserInfoActivity {
 
     private final String TAG = OpenAccountActivity.this.getClass().getSimpleName();
-    private String URL_HOME = "http://www.midas-fx.com";
+   // private String URL_HOME = "http://www.midas-fx.com";
+    private String URL_HOME = "https://direct.fxpro.com/register?lang=en&ib=IBX00330&cc=usd&type=real#step1";
     private WebView webView;
     private int offSet = 0;
 
@@ -28,7 +29,7 @@ public class OpenAccountActivity extends UserInfoActivity {
         this.webView = (WebView) findViewById(R.id.webView);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
-        //settings.setLoadWithOverviewMode(false);
+        settings.setLoadWithOverviewMode(false);
         settings.setBuiltInZoomControls(true);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
