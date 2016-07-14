@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
        //settings.setLoadWithOverviewMode(false);
-        settings.setBuiltInZoomControls(true);
+       //  settings.setBuiltInZoomControls(true);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         // progressBar = ProgressDialog.show(TechnicalActivity.this, "\n" +"技术分析", "Loading");
