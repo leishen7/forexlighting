@@ -206,6 +206,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nucome.app.forex.MainActivity" />
         </activity>
+        <activity android:name="com.nucome.app.forex.AboutusActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

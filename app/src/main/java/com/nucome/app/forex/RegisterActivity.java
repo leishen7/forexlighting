@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,22 +36,36 @@ public class RegisterActivity extends BaseActivity {
     private EditText lastNameView;
     private EditText emailView;
     private EditText phoneView;
+    private TextView messageTextView;
     private Button registerButton;
     private ProgressDialog progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        userIdView = (EditText) findViewById(R.id.userIdEditText);
-        passwordView = (EditText) findViewById(R.id.passwordEditText);
-        firstNameView = (EditText) findViewById(R.id.firstNameEditText);
-        lastNameView = (EditText) findViewById(R.id.lastNameEditText);
         emailView = (EditText) findViewById(R.id.emailEditText);
-        phoneView = (EditText) findViewById(R.id.phoneEditText);
+        //userIdView = (EditText) findViewById(R.id.userIdEditText);
+        passwordView = (EditText) findViewById(R.id.passwordEditText);
+       // firstNameView = (EditText) findViewById(R.id.firstNameEditText);
+       // lastNameView = (EditText) findViewById(R.id.lastNameEditText);
+        messageTextView = (TextView) findViewById(R.id.messageTextView);
+       // phoneView = (EditText) findViewById(R.id.phoneEditText);
         registerButton = (Button) findViewById(R.id.submitRegister);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(emailView.getText().toString().indexOf("@")<1 ||emailView.getText().toString().indexOf("@")>emailView.getText().toString().lastIndexOf(".")){
+                    passwordView.setText("");
+                    messageTextView.setText("* Invalid Email Address");
+                    emailView.setText("");
+                    return;
+                }
+                if(passwordView.getText().length()<6){
+                    passwordView.setText("");
+                    messageTextView.setText("* Minimum Length of password is 6");
+                    emailView.setText("");
+                    return;
+                }
                 progressBar = new ProgressDialog(RegisterActivity.this);
                 progressBar.setMessage("Registering");
                 progressBar.setIndeterminate(true);
@@ -66,8 +81,12 @@ public class RegisterActivity extends BaseActivity {
                         if (response.length() > 0) {
                             try {
                                 JSONObject registerObj = new JSONObject(response.toString());
-                                if ("103".equals(registerObj.getString("errorCode"))) {
-                                    Toast.makeText(getApplicationContext(), "User " + userIdView.getText() + " already exists, please select a different one.",Toast.LENGTH_LONG).show();
+                                if (registerObj.getString("errorCode")!="null" && !("".equals(registerObj.getString("errorCode")))) {
+
+                                    passwordView.setText("");
+                                    messageTextView.setText("* "+registerObj.getString("errorDescription"));
+                                    emailView.setText("");
+                                   // Toast.makeText(getApplicationContext(), "User " + emailView.getText() + " failed to register "+registerObj.getString("errorCode"),Toast.LENGTH_LONG).show();
 
                                 } else {
                                     JSONObject result = registerObj.getJSONObject("content");
@@ -112,12 +131,12 @@ public class RegisterActivity extends BaseActivity {
                         String body = null;
                         try
                         {
-                            jsonObject.put("userId", userIdView.getText());
+                         //   jsonObject.put("userId", userIdView.getText());
                             jsonObject.put("password", passwordView.getText());
-                            jsonObject.put("firstname", firstNameView.getText());
-                            jsonObject.put("lastname", lastNameView.getText());
+                          //  jsonObject.put("firstname", firstNameView.getText());
+                          //  jsonObject.put("lastname", lastNameView.getText());
                             jsonObject.put("email", emailView.getText());
-                            jsonObject.put("phone", phoneView.getText());
+                           // jsonObject.put("phone", phoneView.getText());
 
                             body = jsonObject.toString();
                         } catch (JSONException e)
@@ -159,9 +178,14 @@ public class RegisterActivity extends BaseActivity {
                 Intent registerIntent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(registerIntent);
                 return  true;
+            /*
             case R.id.login:
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);
+                return  true;*/
+            case R.id.aboutus:
+                Intent aboutusIntent = new Intent(getApplicationContext(), AboutusActivity.class);
+                startActivity(aboutusIntent);
                 return  true;
             case R.id.profile:
                 Intent calendarIntent = new Intent(getApplicationContext(), UserInfoActivity.class);
@@ -175,7 +199,14 @@ public class RegisterActivity extends BaseActivity {
                 Intent intent = new Intent(getApplicationContext(), RecommendationActivity.class);
                 startActivity(intent);
                 return  true;
-
+            case R.id.logout:
+                SharedPreferences pref = getApplicationContext().getSharedPreferences(getString(R.string.PREF_USER_TOKEN), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString(getString(R.string.PREF_USER_TOKEN), null);
+                editor.commit();
+                Intent intentLogout = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intentLogout);
+                return  true;
             default:
                 return super.onOptionsItemSelected(item);
 

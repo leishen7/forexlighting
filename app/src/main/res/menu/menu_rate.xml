@@ -9,10 +9,10 @@
         app:showAsAction="always"
         android:orderInCategory="1"/>
 
-    <item android:id="@+id/futureRate"
+    <!--item android:id="@+id/futureRate"
         android:title="期货"
         app:showAsAction="always"
-        android:orderInCategory="2"/>
+        android:orderInCategory="2"/-->
     <item android:id="@+id/forexchart"
         android:title="图形"
         app:showAsAction="always"

@@ -90,10 +90,10 @@ public class ForexRateActivity extends AppCompatActivity {
                 Intent registerIntent = new Intent(getApplicationContext(), ForexRateActivity.class);
                 startActivity(registerIntent);
                 return  true;
-            case R.id.futureRate:
+            /*case R.id.futureRate:
                 Intent loginIntent = new Intent(getApplicationContext(), FutureRateActivity.class);
                 startActivity(loginIntent);
-                return  true;
+                return  true;*/
             case R.id.forexchart:
                 Intent calendarIntent = new Intent(getApplicationContext(), ForexChartActivity.class);
                 startActivity(calendarIntent);
