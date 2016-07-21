@@ -36,6 +36,7 @@ public class RegisterActivity extends BaseActivity {
     private EditText lastNameView;
     private EditText emailView;
     private EditText phoneView;
+    private EditText nickNameView;
     private TextView messageTextView;
     private Button registerButton;
     private ProgressDialog progressBar;
@@ -46,10 +47,11 @@ public class RegisterActivity extends BaseActivity {
         emailView = (EditText) findViewById(R.id.emailEditText);
         //userIdView = (EditText) findViewById(R.id.userIdEditText);
         passwordView = (EditText) findViewById(R.id.passwordEditText);
-       // firstNameView = (EditText) findViewById(R.id.firstNameEditText);
-       // lastNameView = (EditText) findViewById(R.id.lastNameEditText);
+       firstNameView = (EditText) findViewById(R.id.firstNameEditText);
+        lastNameView = (EditText) findViewById(R.id.lastNameEditText);
+        nickNameView = (EditText) findViewById(R.id.nickNameEditText);
         messageTextView = (TextView) findViewById(R.id.messageTextView);
-       // phoneView = (EditText) findViewById(R.id.phoneEditText);
+        phoneView = (EditText) findViewById(R.id.phoneEditText);
         registerButton = (Button) findViewById(R.id.submitRegister);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,10 +135,11 @@ public class RegisterActivity extends BaseActivity {
                         {
                          //   jsonObject.put("userId", userIdView.getText());
                             jsonObject.put("password", passwordView.getText());
-                          //  jsonObject.put("firstname", firstNameView.getText());
-                          //  jsonObject.put("lastname", lastNameView.getText());
+                            jsonObject.put("firstname", firstNameView.getText());
+                            jsonObject.put("lastname", lastNameView.getText());
                             jsonObject.put("email", emailView.getText());
-                           // jsonObject.put("phone", phoneView.getText());
+                            jsonObject.put("phone", phoneView.getText());
+                            jsonObject.put("nickame", nickNameView.getText());
 
                             body = jsonObject.toString();
                         } catch (JSONException e)
@@ -178,11 +181,11 @@ public class RegisterActivity extends BaseActivity {
                 Intent registerIntent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(registerIntent);
                 return  true;
-            /*
+
             case R.id.login:
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);
-                return  true;*/
+                return  true;
             case R.id.aboutus:
                 Intent aboutusIntent = new Intent(getApplicationContext(), AboutusActivity.class);
                 startActivity(aboutusIntent);

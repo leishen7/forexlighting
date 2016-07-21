@@ -9,9 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nucome.app.forex.UserInfoActivity">
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="50dp"
         android:layout_height="20dp"
-        android:text="User Id:"
+        android:text="用户名:"
         android:id="@+id/userInfoUserIdView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -20,10 +20,10 @@
         android:layout_marginTop="16dp"/>
 
     <EditText
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:maxLength="10"
+        android:maxLength="40"
         android:id="@+id/userInfoUserIdEditText"
         android:layout_toRightOf="@+id/userInfoUserIdView"
         android:contentDescription="userId"
@@ -32,37 +32,13 @@
         android:focusableInTouchMode="false"
         android:hint="User Id"
         android:layout_alignBaseline="@+id/userInfoUserIdView"/>
-
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="50dp"
         android:layout_height="20dp"
-        android:text="First Name:"
-        android:id="@+id/userInfoFirstNameLabel"
-        android:layout_below="@+id/userInfoUserIdView"
-        android:layout_alignLeft="@+id/userInfoUserIdView"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:enabled="false"
-        android:hint="@string/firstName"
-        android:ems="10"
-        android:maxLines="1"
-        android:maxLength="20"
-        android:id="@+id/userInfoFirstNameEditText"
-        android:layout_below="@+id/userInfoUserIdView"
-        android:layout_toRightOf="@+id/userInfoFirstNameLabel"
-        android:layout_alignBaseline="@+id/userInfoFirstNameLabel"
-        />
-    <TextView
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:text="Last Name:"
+        android:text="性:"
         android:id="@+id/userInfoLastNameLabel"
-        android:layout_below="@+id/userInfoFirstNameLabel"
-        android:layout_alignLeft="@+id/userInfoFirstNameLabel"
+        android:layout_below="@+id/userInfoUserIdView"
+        android:layout_alignRight="@+id/userInfoUserIdView"
         android:layout_marginTop="16dp" />
 
     <EditText
@@ -70,20 +46,45 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="@string/lastName"
-        android:ems="10"
-        android:enabled="false"
+
+        android:enabled="true"
         android:maxLines="1"
-        android:maxLength="20"
+        android:maxLength="15"
         android:id="@+id/userInfoLastNameEditText"
         android:layout_below="@+id/userInfoFirstNameLabel"
         android:layout_toRightOf="@+id/userInfoLastNameLabel"
         android:layout_alignBaseline="@+id/userInfoLastNameLabel"
         />
 
+
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="Email:"
+        android:text="名:"
+        android:id="@+id/userInfoFirstNameLabel"
+        android:layout_below="@+id/userInfoUserIdView"
+        android:layout_toRightOf="@+id/userInfoLastNameEditText"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:enabled="true"
+        android:hint="@string/firstName"
+
+        android:maxLines="1"
+        android:maxLength="15"
+        android:id="@+id/userInfoFirstNameEditText"
+        android:layout_below="@+id/userInfoUserIdView"
+        android:layout_toRightOf="@+id/userInfoFirstNameLabel"
+        android:layout_alignBaseline="@+id/userInfoFirstNameLabel"
+        />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="电邮:"
         android:id="@+id/userInfoEmailLabel"
         android:layout_below="@+id/userInfoLastNameLabel"
         android:layout_alignLeft="@+id/userInfoLastNameLabel"
@@ -96,16 +97,16 @@
         android:ems="10"
         android:maxLength="40"
         android:maxLines="1"
-        android:enabled="false"
+        android:enabled="true"
         android:id="@+id/userInfoEmailEditText"
         android:layout_below="@+id/userInfoLastNameLabel"
         android:layout_toRightOf="@+id/userInfoEmailLabel"
         android:layout_alignBaseline="@+id/userInfoEmailLabel" />
 
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="50dp"
         android:layout_height="20dp"
-        android:text="Phone:"
+        android:text="电话:"
         android:id="@+id/userInfoPhoneLabel"
         android:layout_below="@+id/userInfoEmailLabel"
         android:layout_alignLeft="@+id/userInfoEmailLabel"
@@ -116,7 +117,7 @@
         android:inputType="phone"
         android:ems="10"
         android:maxLines="1"
-        android:enabled="false"
+        android:enabled="true"
         android:maxLength="40"
         android:hint="@string/phone"
         android:id="@+id/userInfoPhoneEditText"
@@ -124,10 +125,32 @@
         android:layout_toRightOf="@+id/userInfoPhoneLabel"
         android:layout_alignBaseline="@+id/userInfoPhoneLabel" />
 
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="别名:"
+        android:id="@+id/userInfoNickNameLabel"
+        android:layout_below="@+id/userInfoPhoneLabel"
+        android:layout_alignLeft="@+id/userInfoPhoneLabel"
+        android:layout_marginTop="16dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:maxLines="1"
+        android:enabled="true"
+        android:maxLength="40"
+        android:hint="@string/nickName"
+        android:id="@+id/userInfoNickNameEditText"
+        android:layout_below="@+id/userInfoEmailLabel"
+        android:layout_toRightOf="@+id/userInfoNickNameLabel"
+        android:layout_alignBaseline="@+id/userInfoNickNameLabel" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finish"
+        android:text="保存"
         android:id="@+id/userInfoFinish"
         android:layout_below="@+id/userInfoPhoneLabel"
         android:layout_centerHorizontal="true"

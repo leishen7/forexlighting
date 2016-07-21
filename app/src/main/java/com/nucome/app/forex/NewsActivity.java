@@ -133,6 +133,7 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
             case R.id.ForexLive:
                 Intent forexLiveIntent = new Intent(getApplicationContext(), ForexLiveActivity.class);
                 startActivity(forexLiveIntent);
+                return true;
             case R.id.FxStreet:
                 Intent fxStreetIntent = new Intent(getApplicationContext(), FxStreetActivity.class);
                 startActivity(fxStreetIntent);

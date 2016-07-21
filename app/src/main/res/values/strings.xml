@@ -7,6 +7,7 @@
     <string name="lastName">Last Name</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
+    <string name="nickName">Nick Name</string>
     <string name="PREF_USER_TOKEN">UserToken</string>
     <string name="JSON_TOKEN">token</string>
     <string name="INTENT_RECOMMEND">INTENT_RECOMMENDATION</string>
@@ -15,10 +16,10 @@
     <string name="ABOUT_US">外汇可以每周5天每天24小时参与全球市场。交易低成本，最低投资额较低，杠杆率最高可达400:1。外汇是全球最大的金融市场。外汇市场自1999年起对散户交易者开放，可以为交易者提供其它市场类别无法提供的机会。</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="prompt_email">电邮</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登  录</string>
+    <string name="action_sign_in_short">登录</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
