@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.nucome.app.forex.R;
@@ -55,12 +56,21 @@ public class SwipeRealTimeRateListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.rate_list_row, null);
         }
         TextView curreny = (TextView) convertView.findViewById(R.id.currency);
-        //TextView rate = (TextView) convertView.findViewById(R.id.rate);
+        TextView rate = (TextView) convertView.findViewById(R.id.rate);
+        TextView dailyChange = (TextView) convertView.findViewById(R.id.dailychange);
+
         ImageView chart = (ImageView) convertView.findViewById(R.id.rateChart);
         curreny.setText(String.valueOf(rateList.get(position).currency));
-       // rate.setText(String.valueOf(rateList.get(position).rate));
+        rate.setText(String.valueOf(rateList.get(position).rate));
+        Double change=rateList.get(position).dailyChange;
+        dailyChange.setText(change.toString());
+        if(change.doubleValue()>0){
+            dailyChange.setTextColor(Color.RED);
+        }else if(change.doubleValue()<0){
+            dailyChange.setTextColor(Color.GREEN);
+        }
         Picasso.with(chart.getContext()).load(rateList.get(position).rateChartURL).into(chart);
-
+       // chart.setImageResource(R.drawable.chart);
         String color = bgColors[position % bgColors.length];
         curreny.setBackgroundColor(Color.parseColor(color));
         return convertView;

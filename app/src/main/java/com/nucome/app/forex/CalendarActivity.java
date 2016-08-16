@@ -3,6 +3,8 @@ package com.nucome.app.forex;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -27,10 +29,21 @@ public class CalendarActivity extends BaseActivity {
         setContentView(R.layout.activity_calendar);
         this.webView = (WebView) findViewById(R.id.calendarWebView);
         WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
+        settings.setLoadWithOverviewMode(false);
         settings.setBuiltInZoomControls(true);
-        settings.setDisplayZoomControls(false);
+        webView.getSettings().setAppCacheMaxSize( 1 * 1024 * 1024 ); // 5MB
+        webView.getSettings().setAppCachePath( getApplicationContext().getCacheDir().getAbsolutePath() );
+        webView.getSettings().setAllowFileAccess( true );
+        webView.getSettings().setAppCacheEnabled( true );
+        webView.getSettings().setJavaScriptEnabled( true );
+        webView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT ); // load online by default
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        if ( !isNetworkAvailable() ) { // loading offline
+            webView.getSettings().setCacheMode( WebSettings.LOAD_CACHE_ELSE_NETWORK );
+        }
+
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         //progressBar = ProgressDialog.show(CalendarActivity.this, "财经日历", "Loading");
 
@@ -106,5 +119,11 @@ public class CalendarActivity extends BaseActivity {
 
         }
 
+    }
+
+    protected boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService( CONNECTIVITY_SERVICE );
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

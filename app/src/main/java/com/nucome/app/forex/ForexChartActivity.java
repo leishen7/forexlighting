@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,17 +48,38 @@ public class ForexChartActivity extends ForexRateActivity implements SwipeRefres
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*
+                RateInfo info = (RateInfo) parent.getItemAtPosition(position);
+                Intent intent=null;
+               // switch (view.getId()) {
+
+
                 SharedPreferences preferences = getSharedPreferences(getString(R.string.PREF_USER_TOKEN), Context.MODE_PRIVATE);
                 if (! preferences.contains(getString(R.string.PREF_USER_TOKEN))) {
-                    Toast.makeText(getApplicationContext(), "Please Register or Login before Recommend", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "请先注册或登陆", Toast.LENGTH_SHORT).show();
                 } else {
-                */
-                    RateInfo info = (RateInfo) parent.getItemAtPosition(position);
-                    Intent intent = new Intent(getApplicationContext(), ChartImageActivity.class);
-                    intent.putExtra(getString(R.string.INTENT_RateChartURL), info.rateChartURL);
+                    intent = new Intent(getApplicationContext(), CommentActivity.class);
+                    intent.putExtra(getString(R.string.INTENT_COMMENT), info.currency);
                     startActivity(intent);
-              //  }
+                }
+/*
+                    case R.id.rateChart:
+                        intent = new Intent(getApplicationContext(), ChartImageActivity.class);
+                        intent.putExtra(getString(R.string.INTENT_RateChartURL), info.rateChartURL);
+                        break;
+                    case R.id.rate_comment:
+                        intent = new Intent(getApplicationContext(), CommentActivity.class);
+                        intent.putExtra(getString(R.string.INTENT_COMMENT), info.currency);
+                        startActivity(intent);
+
+                        break;
+                    case R.id.rate_recommend:
+                        intent = new Intent(getApplicationContext(), RecommendationActivity.class);
+                        intent.putExtra(getString(R.string.INTENT_RECOMMEND), info.currency);
+                        break;
+                }
+                if(intent!=null) {
+                    startActivity(intent);
+                }*/
             }
         });
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -89,8 +111,9 @@ public class ForexChartActivity extends ForexRateActivity implements SwipeRefres
                             JSONObject rateObj = rates.getJSONObject(i);
                             String currency = rateObj.getString("symbol");
                             String rate = rateObj.getString("price");
+                            Double dailyChange = rateObj.getDouble("dailyChange");
                             String chartURL = rateObj.getString("chart");
-                            RateInfo info = new RateInfo(currency, rate, chartURL);
+                            RateInfo info = new RateInfo(currency, rate,dailyChange, chartURL);
                             rateList.add(info);
                         }
                         adapter.notifyDataSetChanged();

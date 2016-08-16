@@ -1,6 +1,8 @@
 package com.nucome.app.forex;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +40,71 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
     protected List<NewsInfo> newsList;
     protected int offSet = 0;
 
+    private String fileName = "NewsData";
+
+    protected boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService( CONNECTIVITY_SERVICE );
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+protected void saveToCache(String responseString,String fileName){
+    File file;
+    FileOutputStream outputStream;
+    try {
+        // file = File.createTempFile("MyCache", null, getCacheDir());
+        file = new File(getCacheDir(), fileName);
+
+        outputStream = new FileOutputStream(file);
+        outputStream.write(responseString.getBytes());
+        outputStream.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+    protected String readFromCache(String fileName) {
+        BufferedReader input = null;
+        StringBuffer buffer = new StringBuffer();
+        File file = null;
+        try {
+            file = new File(getCacheDir(), fileName); // Pass getFilesDir() and "MyFile" to read file
+
+            input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            String line;
+
+            while ((line = input.readLine()) != null) {
+                buffer.append(line);
+            }
+
+            Log.d(TAG, buffer.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return buffer.toString();
+    }
+
+    protected void parseResponse(String responseString,List<NewsInfo> newsList){
+        if (responseString.length() > 0) {
+            try {
+                JSONObject newsObjs = new JSONObject(responseString);
+                JSONArray rates = newsObjs.getJSONArray("content");
+                for (int i = 0; i < rates.length(); i++) {
+                    JSONObject newsObj = rates.getJSONObject(i);
+                    String title = newsObj.getString("title");
+                    String description = newsObj.getString("description");
+                    String pubDate = newsObj.getString("pubDate");
+                    String source = newsObj.getString("source");
+
+                    NewsInfo info = new NewsInfo(title, description, pubDate, source);
+                    newsList.add(info);
+                }
+
+                adapter.notifyDataSetChanged();
+            } catch (JSONException e) {
+                Log.e(TAG, "JSON Parsing error: " + e.getMessage());
+            }
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +116,13 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
         adapter = new SwipeNewsListAdapter(this, newsList);
         listView.setAdapter(adapter);
         swipeRefreshLayout.setOnRefreshListener(this);
+        String cachedResponse=readFromCache(fileName);
+        if(cachedResponse.length()>0){
+            swipeRefreshLayout.setRefreshing(true);
+            parseResponse(cachedResponse,newsList);
+            swipeRefreshLayout.setRefreshing(false);
+        }
+
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -70,26 +150,9 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, response.toString());
-                if (response.length() > 0) {
-                    try {
-                    JSONObject newsObjs = new JSONObject(response.toString());
-                    JSONArray rates = newsObjs.getJSONArray("content");
-                        for (int i = 0; i < rates.length(); i++) {
-                                JSONObject newsObj = rates.getJSONObject(i);
-                                String title = newsObj.getString("title");
-                                String description = newsObj.getString("description");
-                                String pubDate = newsObj.getString("pubDate");
-                                String source = newsObj.getString("source");
+                saveToCache(response.toString(),fileName);
+                parseResponse(response.toString(),newsList);
 
-                            NewsInfo info = new NewsInfo(title, description, pubDate, source);
-                                newsList.add(info);
-                        }
-                    adapter.notifyDataSetChanged();
-                    } catch (JSONException e) {
-                        Log.e(TAG, "JSON Parsing error: " + e.getMessage());
-                    }
-
-                }
                 swipeRefreshLayout.setRefreshing(false);
             }
         }, new Response.ErrorListener() {
@@ -137,6 +200,11 @@ public class NewsActivity extends AppCompatActivity implements SwipeRefreshLayou
             case R.id.FxStreet:
                 Intent fxStreetIntent = new Intent(getApplicationContext(), FxStreetActivity.class);
                 startActivity(fxStreetIntent);
+                return true;
+            case R.id.MarketPulse:
+                Intent marketpulseIntent = new Intent(getApplicationContext(), MarketPulseActivity.class);
+                startActivity(marketpulseIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

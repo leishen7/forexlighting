@@ -3,6 +3,7 @@ package com.nucome.app.forex;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.Menu;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ public class MarketWatchActivity extends NewsActivity {
     private ListView listView;
     private List<NewsInfo> newsList;
     private int offSet = 0;
-
+private String fileName="MarketData";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,16 @@ public class MarketWatchActivity extends NewsActivity {
         adapter = new SwipeNewsListAdapter(this, newsList);
         listView.setAdapter(adapter);
         swipeRefreshLayout.setOnRefreshListener(this);
+        String cachedResponse=readFromCache(fileName);
+        if(cachedResponse.length()>0){
+            swipeRefreshLayout.setRefreshing(true);
+            parseResponse(cachedResponse,newsList);
+            swipeRefreshLayout.setRefreshing(false);
+        }
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                swipeRefreshLayout.setRefreshing(true);
+              //  swipeRefreshLayout.setRefreshing(true);
                 fetchNews();
             }
         });
@@ -59,26 +66,8 @@ public class MarketWatchActivity extends NewsActivity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, response.toString());
-                if (response.length() > 0) {
-                    try {
-                    JSONObject newsObjs = new JSONObject(response.toString());
-                    JSONArray rates = newsObjs.getJSONArray("content");
-                        for (int i = 0; i < rates.length(); i++) {
-                                JSONObject newsObj = rates.getJSONObject(i);
-                                String title = newsObj.getString("title");
-                                String description = newsObj.getString("description");
-                                String pubDate = newsObj.getString("pubDate");
-                                String source = newsObj.getString("source");
-
-                            NewsInfo info = new NewsInfo(title, description, pubDate, source);
-                                newsList.add(info);
-                        }
-                    adapter.notifyDataSetChanged();
-                    } catch (JSONException e) {
-                        Log.e(TAG, "JSON Parsing error: " + e.getMessage());
-                    }
-
-                }
+                saveToCache(response.toString(),fileName);
+                parseResponse(response.toString(),newsList);
                 swipeRefreshLayout.setRefreshing(false);
             }
         }, new Response.ErrorListener() {
@@ -90,5 +79,14 @@ public class MarketWatchActivity extends NewsActivity {
             }
         });
         TradeApplication.getInstance().addToRequestQuest(req);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_news_en, menu);
+        return true;
+
     }
 }

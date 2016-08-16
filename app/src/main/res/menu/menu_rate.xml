@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
-
-    <item android:id="@+id/realTimeRate"
-        android:title="外汇"
-        app:showAsAction="always"
-        android:orderInCategory="1"/>
-
-    <!--item android:id="@+id/futureRate"
-        android:title="期货"
-        app:showAsAction="always"
-        android:orderInCategory="2"/-->
-    <item android:id="@+id/forexchart"
-        android:title="图形"
-        app:showAsAction="always"
-        android:orderInCategory="3"/>
     <item android:id="@+id/technical"
         android:title="买/卖"
         app:showAsAction="always"
-        android:orderInCategory="4"/>
+        android:orderInCategory="1"/>
+    <item android:id="@+id/recommendations"
+        android:title="推荐"
+        app:showAsAction="always"
+        android:orderInCategory="2"/>
+
+
+
+    <item android:id="@+id/comments"
+        android:title="评论"
+        app:showAsAction="always"
+        android:orderInCategory="3"/>
 </menu>
 

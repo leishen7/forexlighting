@@ -17,15 +17,15 @@ public abstract class BaseActivity extends AppCompatActivity {
                 startActivity(registerIntent);
                 return  true;
             case R.id.realTimeRate:
-                Intent loginIntent = new Intent(getApplicationContext(), ForexRateActivity.class);
+                Intent loginIntent = new Intent(getApplicationContext(), TechnicalActivity.class);
                 startActivity(loginIntent);
                 return  true;
             case R.id.calendar:
                 Intent calendarIntent = new Intent(getApplicationContext(), CalendarActivity.class);
                 startActivity(calendarIntent);
                 return  true;
-            case R.id.learning:
-                Intent learningIntent = new Intent(getApplicationContext(), LearningActivity.class);
+            case R.id.whyForex:
+                Intent learningIntent = new Intent(getApplicationContext(), WhyForexActivity.class);
                 startActivity(learningIntent);
                 return  true;
             /*

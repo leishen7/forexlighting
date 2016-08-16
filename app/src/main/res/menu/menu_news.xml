@@ -27,7 +27,7 @@
         app:showAsAction="always"
         android:orderInCategory="5"/>
     <item android:id="@+id/marketwatch"
-        android:title="MarketWatch"
+        android:title="DailyAnalysis"
         app:showAsAction="ifRoom"
         android:orderInCategory="6"/>
     <item android:id="@+id/ForexLive"
@@ -38,5 +38,9 @@
         android:title="FxStreet"
         app:showAsAction="ifRoom"
         android:orderInCategory="8"/>
+    <item android:id="@+id/MarketPulse"
+        android:title="MarketPulse"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="9"/>
 </menu>
 

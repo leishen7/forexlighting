@@ -3,8 +3,8 @@
     package="com.nucome.app.forex">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -22,19 +22,27 @@
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.nucome.app.forex.MainActivity">
+
+        <activity
+            android:name="com.nucome.app.forex.Splash"
+
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.nucome.app.forex.RateActivity"
-            android:parentActivityName="com.nucome.app.forex.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.nucome.app.forex.MainActivity" />
+
+        <activity android:name="com.nucome.app.forex.MainActivity"    >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+
+
         </activity>
         <activity
             android:name="com.nucome.app.forex.ChartImageActivity"
@@ -128,6 +136,13 @@
                 android:value="com.nucome.app.forex.MainActivity" />
         </activity>
         <activity
+            android:name="com.nucome.app.forex.MarketPulseActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity
             android:name="com.nucome.app.forex.SignalActivity"
             android:parentActivityName="com.nucome.app.forex.MainActivity">
             <meta-data
@@ -171,15 +186,11 @@
                 android:value="com.nucome.app.forex.MainActivity" />
         </activity>
 
-        <activity
+        <!--activity
             android:name="com.nucome.app.forex.LearningActivity"
-            android:configChanges="orientation|screenSize"
-            android:parentActivityName="com.nucome.app.forex.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nucome.app.forex.MainActivity" />
@@ -199,7 +210,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nucome.app.forex.MainActivity" />
-        </activity>
+        </activity-->
         <activity android:name="com.nucome.app.forex.UserInfoActivity"
             android:parentActivityName="com.nucome.app.forex.MainActivity">
             <meta-data
@@ -207,6 +218,54 @@
                 android:value="com.nucome.app.forex.MainActivity" />
         </activity>
         <activity android:name="com.nucome.app.forex.AboutusActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.CommentActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.KnowForexActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.WhyForexActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.TradeForexActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.GetCommentsActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.GetRecommendsActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.ForgetPasswordActivity"
+            android:parentActivityName="com.nucome.app.forex.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nucome.app.forex.MainActivity" />
+        </activity>
+        <activity android:name="com.nucome.app.forex.ContactUsActivity"
             android:parentActivityName="com.nucome.app.forex.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

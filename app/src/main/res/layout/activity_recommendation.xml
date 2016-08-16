@@ -9,50 +9,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nucome.app.forex.RecommendationActivity">
 
-    <TextView
-        android:layout_width="80dp"
+       <TextView
+        android:layout_width="66dp"
         android:layout_height="20dp"
-        android:text="symbol:"
-        android:id="@+id/symbolView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:maxLength="10"
-        android:id="@+id/recommendation_symbolEditText"
-        android:layout_toRightOf="@+id/symbolView"
-        android:contentDescription="symbol"
-        android:enabled="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:hint="Symbol"
-        android:layout_alignBaseline="@+id/symbolView"/>
-
-    <TextView
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:text="Side"
+        android:text="买/卖"
         android:id="@+id/sideTextView"
-        android:layout_below="@+id/symbolView"
-        android:layout_alignLeft="@+id/symbolView"
-        android:layout_marginTop="16dp" />
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentStart="true"
+           android:layout_marginLeft="32dp"
+           android:layout_marginStart="32dp"
+           android:layout_marginTop="16dp" />
 
     <RadioGroup
         android:layout_width="160dp"
         android:layout_height="20dp"
-        android:layout_below="@+id/symbolView"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         android:id="@+id/recommendation_radioGroup"
-        android:layout_toRightOf="@+id/sideTextView"
-        android:layout_alignRight="@+id/recommendation_effectiveDaysEditText"
-        android:layout_alignEnd="@+id/recommendation_effectiveDaysEditText">
+        android:layout_toRightOf="@+id/sideTextView">
 
         <RadioButton
             android:layout_width="80dp"
@@ -72,35 +46,51 @@
     </RadioGroup>
 
 
+
+
+
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="66dp"
         android:layout_height="20dp"
-        android:text="Effective Days:"
-        android:id="@+id/effectiveDaysLabel"
+        android:text="货币对:"
+        android:id="@+id/symbolView"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/sideTextView"
-        android:layout_alignLeft="@+id/sideTextView"
-        android:layout_marginTop="16dp" />
+        android:layout_alignRight="@+id/sideTextView"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Effective days"
-        android:ems="10"
         android:maxLines="1"
-        android:maxLength="3"
-        android:id="@+id/recommendation_effectiveDaysEditText"
+        android:maxLength="6"
+        android:layout_marginTop="16dp"
+        android:id="@+id/recommendation_symbolEditText"
+        android:layout_below="@+id/recommendation_radioGroup"
+        android:layout_toRightOf="@+id/symbolView"
+        android:layout_alignBaseline="@+id/symbolView"
+        android:contentDescription="symbol"
+        android:enabled="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <Spinner
+        android:id="@+id/symbolspin"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/symbols_array"
         android:layout_below="@+id/sideTextView"
-        android:layout_toRightOf="@+id/effectiveDaysLabel"
-        android:layout_alignBaseline="@+id/effectiveDaysLabel"
-        android:layout_alignRight="@+id/recommendation_symbolEditText"
-        android:layout_alignEnd="@+id/recommendation_symbolEditText" />
+        android:layout_toRightOf="@+id/recommendation_symbolEditText"
+        android:layout_alignBaseline="@+id/symbolView" />
+
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recommend"
+        android:text="推荐交易"
         android:id="@+id/recommendation_Button"
-        android:layout_marginTop="157dp"
-        android:layout_below="@+id/recommendation_effectiveDaysEditText"
+        android:layout_marginTop="200dp"
+        android:layout_below="@+id/sideTextView"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

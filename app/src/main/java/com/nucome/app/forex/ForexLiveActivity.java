@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForexLiveActivity extends NewsActivity {
+public class ForexLiveActivity extends MarketWatchActivity {
     private String TAG = ForexLiveActivity.class.getSimpleName();
     private String URL_ANALYSIS_INFO = "http://www.wuzhenweb.com:8089/json?operation=getfxnews&item=basic";
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -27,7 +27,7 @@ public class ForexLiveActivity extends NewsActivity {
     private ListView listView;
     private List<NewsInfo> newsList;
     private int offSet = 0;
-
+private String fileName="ForexLiveData";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,12 @@ public class ForexLiveActivity extends NewsActivity {
         adapter = new SwipeNewsListAdapter(this, newsList);
         listView.setAdapter(adapter);
         swipeRefreshLayout.setOnRefreshListener(this);
+        String cachedResponse=readFromCache(fileName);
+        if(cachedResponse.length()>0){
+            swipeRefreshLayout.setRefreshing(true);
+            parseResponse(cachedResponse,newsList);
+            swipeRefreshLayout.setRefreshing(false);
+        }
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -59,26 +65,8 @@ public class ForexLiveActivity extends NewsActivity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, response.toString());
-                if (response.length() > 0) {
-                    try {
-                    JSONObject newsObjs = new JSONObject(response.toString());
-                    JSONArray rates = newsObjs.getJSONArray("content");
-                        for (int i = 0; i < rates.length(); i++) {
-                                JSONObject newsObj = rates.getJSONObject(i);
-                                String title = newsObj.getString("title");
-                                String description = newsObj.getString("description");
-                                String pubDate = newsObj.getString("pubDate");
-                                String source = newsObj.getString("source");
-
-                            NewsInfo info = new NewsInfo(title, description, pubDate, source);
-                                newsList.add(info);
-                        }
-                    adapter.notifyDataSetChanged();
-                    } catch (JSONException e) {
-                        Log.e(TAG, "JSON Parsing error: " + e.getMessage());
-                    }
-
-                }
+                saveToCache(response.toString(),fileName);
+                parseResponse(response.toString(),newsList);
                 swipeRefreshLayout.setRefreshing(false);
             }
         }, new Response.ErrorListener() {

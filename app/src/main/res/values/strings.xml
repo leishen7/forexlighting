@@ -11,6 +11,7 @@
     <string name="PREF_USER_TOKEN">UserToken</string>
     <string name="JSON_TOKEN">token</string>
     <string name="INTENT_RECOMMEND">INTENT_RECOMMENDATION</string>
+    <string name="INTENT_COMMENT">INTENT_COMMENT</string>
     <string name="INTENT_RateChartURL">INTENT_RateChartURL</string>
     <string name="title_activity_login">Sign in</string>
     <string name="ABOUT_US">外汇可以每周5天每天24小时参与全球市场。交易低成本，最低投资额较低，杠杆率最高可达400:1。外汇是全球最大的金融市场。外汇市场自1999年起对散户交易者开放，可以为交易者提供其它市场类别无法提供的机会。</string>
@@ -27,4 +28,24 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string-array name="symbols_array">
+        <item></item>
+        <item>EURUSD</item>
+        <item>GBPUSD</item>
+        <item>USDJPY</item>
+        <item>USDCAD</item>
+        <item>AUDUSD</item>
+        <item>NZDUSD</item>
+        <item>USDCHF</item>
+        <item>USDNOK</item>
+    </string-array>
+    <string-array name="questions_array">
+        <item>App使用</item>
+        <item>交易开户</item>
+        <item>推荐交易</item>
+        <item>用户评论</item>
+        <item>改进建议</item>
+        <item>寻求合作</item>
+        <item>其他问题</item>
+    </string-array>
 </resources>

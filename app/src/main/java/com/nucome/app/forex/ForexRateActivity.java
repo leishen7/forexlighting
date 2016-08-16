@@ -3,6 +3,8 @@ package com.nucome.app.forex;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,13 +29,21 @@ public class ForexRateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String url="http://www.wuzhenweb.com/forex/truefx.html";
+      //  String url="http://www.wuzhenweb.com/forex/truefx.html";
+        String url="http://www.wuzhenweb.com/js/index.html";
         this.webView = (WebView) findViewById(R.id.webView);
         WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setBuiltInZoomControls(true);
-        settings.setDisplayZoomControls(false);
+        webView.getSettings().setAppCacheMaxSize( 1 * 1024 * 1024 ); // 5MB
+        webView.getSettings().setAppCachePath( getApplicationContext().getCacheDir().getAbsolutePath() );
+        webView.getSettings().setAllowFileAccess( true );
+        webView.getSettings().setAppCacheEnabled( true );
+        webView.getSettings().setJavaScriptEnabled( true );
+        webView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT ); // load online by default
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        if ( !isNetworkAvailable() ) { // loading offline
+            webView.getSettings().setCacheMode( WebSettings.LOAD_CACHE_ELSE_NETWORK );
+        }
+
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
        // progressBar = ProgressDialog.show(ForexRateActivity.this, "\n" +"实时汇率", "Loading");
         webView.setWebViewClient(new WebViewClient() {
@@ -90,34 +100,24 @@ public class ForexRateActivity extends AppCompatActivity {
                 Intent registerIntent = new Intent(getApplicationContext(), ForexRateActivity.class);
                 startActivity(registerIntent);
                 return  true;
-            /*case R.id.futureRate:
-                Intent loginIntent = new Intent(getApplicationContext(), FutureRateActivity.class);
-                startActivity(loginIntent);
-                return  true;*/
-            case R.id.forexchart:
-                Intent calendarIntent = new Intent(getApplicationContext(), ForexChartActivity.class);
-                startActivity(calendarIntent);
-                return  true;
-            case R.id.technical:
+
+             case R.id.technical:
                 Intent learningIntent = new Intent(getApplicationContext(), TechnicalActivity.class);
                 startActivity(learningIntent);
+                return  true;
+           case R.id.comments:
+                Intent loginIntent = new Intent(getApplicationContext(), GetCommentsActivity.class);
+                startActivity(loginIntent);
                 return  true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        webView.destroy();
-    }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        webView.onPause();
-        webView.pauseTimers();
+    protected boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService( CONNECTIVITY_SERVICE );
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
 }

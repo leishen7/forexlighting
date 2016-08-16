@@ -27,7 +27,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends AppCompatActivity {
     private String TAG = getClass().getSimpleName();
     private String URL_REGISTER_INFO="http://www.wuzhenweb.com:8089/json?operation=registeruser";
     private EditText userIdView;
@@ -151,6 +151,7 @@ public class RegisterActivity extends BaseActivity {
                         try
                         {
                             return body.toString().getBytes("utf-8");
+                           // new String(body.getBytes("ISO-8859-1"), "UTF-8");
                         } catch (UnsupportedEncodingException e)
                         {
                             // TODO Auto-generated catch block
@@ -186,30 +187,15 @@ public class RegisterActivity extends BaseActivity {
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);
                 return  true;
+            case R.id.forgetpassword:
+                Intent forgetIntent= new Intent(getApplicationContext(), ForgetPasswordActivity.class);
+                startActivity(forgetIntent);
+                return  true;
             case R.id.aboutus:
                 Intent aboutusIntent = new Intent(getApplicationContext(), AboutusActivity.class);
-                startActivity(aboutusIntent);
+                  startActivity(aboutusIntent);
                 return  true;
-            case R.id.profile:
-                Intent calendarIntent = new Intent(getApplicationContext(), UserInfoActivity.class);
-                startActivity(calendarIntent);
-                return  true;
-            case R.id.openAccount:
-                Intent learningIntent = new Intent(getApplicationContext(), OpenAccountActivity.class);
-                startActivity(learningIntent);
-                return  true;
-            case R.id.recommend:
-                Intent intent = new Intent(getApplicationContext(), RecommendationActivity.class);
-                startActivity(intent);
-                return  true;
-            case R.id.logout:
-                SharedPreferences pref = getApplicationContext().getSharedPreferences(getString(R.string.PREF_USER_TOKEN), Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString(getString(R.string.PREF_USER_TOKEN), null);
-                editor.commit();
-                Intent intentLogout = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intentLogout);
-                return  true;
+
             default:
                 return super.onOptionsItemSelected(item);
 

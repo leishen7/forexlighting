@@ -7,16 +7,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.nucome.app.forex.helper.CustomOnItemSelectedListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +29,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecommendationActivity extends UserInfoActivity {
+public class RecommendationActivity extends TechnicalActivity {
     private String TAG = RecommendationActivity.class.getSimpleName();
     private String URL_RECOMMENDATION_INFO = "http://www.wuzhenweb.com:8089/json?operation=newtrade";
 /*
@@ -41,12 +45,30 @@ public class RecommendationActivity extends UserInfoActivity {
     private Button recommendButton;
     String side;
 
+    Spinner symbolSpin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
         symbol = (EditText) findViewById(R.id.recommendation_symbolEditText);
+
+        symbolSpin=(Spinner) findViewById(R.id.symbolspin);
+
+        symbolSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                symbol.setText(symbolSpin.getSelectedItem().toString());
+           }
+
+
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
+
         Intent intent = getIntent();
         if (intent != null && intent.getStringExtra(getString(R.string.INTENT_RECOMMEND)) != null) {
             symbol.setText(intent.getStringExtra(getString(R.string.INTENT_RECOMMEND)));
@@ -60,11 +82,21 @@ public class RecommendationActivity extends UserInfoActivity {
                 side = String.valueOf(radioButton.getText());
             }
         });
-        effectiveDate = (EditText) findViewById(R.id.recommendation_effectiveDaysEditText);
+       // effectiveDate = (EditText) findViewById(R.id.recommendation_effectiveDaysEditText);
         recommendButton = (Button) findViewById(R.id.recommendation_Button);
         recommendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(symbol==null || symbol.length()!=6){
+                    Toast.makeText(getApplicationContext(), "The symbol is not correct",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if(side==null){
+                    Toast.makeText(getApplicationContext(), "Please choose Buy or Sell",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
                 String url = URL_RECOMMENDATION_INFO;
                 StringRequest req = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
@@ -73,15 +105,18 @@ public class RecommendationActivity extends UserInfoActivity {
                         if (response.length() > 0) {
                             try {
                                 JSONObject recommendObj = new JSONObject(response.toString());
-                                if ("104".equals(recommendObj.getString("errorCode"))) {
-                                    Toast.makeText(getApplicationContext(), "This signal already recommended, please select a different one.",Toast.LENGTH_LONG).show();
+                                if (recommendObj.getString("errorCode")==null || "null".equals(recommendObj.getString("errorCode"))) {
 
-                                } else {
                                     Toast.makeText(getApplicationContext(), "this Recommendation has been recommended successfully.", Toast.LENGTH_LONG).show();
+                                } else if("104".equals(recommendObj.getString("errorCode"))){
+                                    Toast.makeText(getApplicationContext(), "This signal already recommended, please select a different one.",Toast.LENGTH_LONG).show();
+                                }else{
+                                    Toast.makeText(getApplicationContext(), "Failed to recommend this trade",Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 Log.e(TAG, "JSON Parsing error: " + e.getMessage());
                             }
+                            return;
 
                         }
                     }
@@ -108,7 +143,7 @@ public class RecommendationActivity extends UserInfoActivity {
                         {
                             jsonObject.put("symbol", symbol.getText());
                             jsonObject.put("side", side);
-                            jsonObject.put("effectiveDays", effectiveDate.getText());
+                       //     jsonObject.put("effectiveDays", effectiveDate.getText());
                             SharedPreferences pref = getApplicationContext().getSharedPreferences(getString(R.string.PREF_USER_TOKEN), Context.MODE_PRIVATE);
                             jsonObject.put(getString(R.string.JSON_TOKEN), pref.getString(getString(R.string.PREF_USER_TOKEN), null));
 

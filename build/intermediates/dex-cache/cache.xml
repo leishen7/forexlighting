@@ -1,3 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\lei\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\picasso-2.5.2_59fddd4d0aefad24b3c609a6e8d11eb5844e8115.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.support-recyclerview-v7-23.4.0_44cb7c2fe7eabc331be5eb225b0b7ea84bcbd99c.jar" />
+    </item>
+    <item
+        jar="C:\apps\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\support-annotations-23.4.0_506a8b3211c661bf516ef8344491ac087e4fd18b.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.support-support-v4-23.4.0_98d93054ad75a3ecef4baf1f704582f09a6c6c6c.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.support-appcompat-v7-23.4.0_ea74af81d0746b56983071e6338893438a9bc395.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.volley-volley-1.0.0_ed911acd877f3d3944f0b6e8847936266034d098.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\internal_impl-23.4.0_62cde3e40bfcaa5f3481d7631f455b5b63fcc00e.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.support-design-23.4.0_24738c151a8ec8feba679a6d9864f0e441427940.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.support-animated-vector-drawable-23.4.0_4699369a1a4abfe938ff10a74d33fb76462b1685.jar" />
+    </item>
+    <item
+        jar="C:\github\forexlighting\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\github\forexlighting\app\build\intermediates\pre-dexed\release\com.android.support-support-vector-drawable-23.4.0_10a198bdf5a750a91fb4d4a13a46d9f6e6faa67a.jar" />
+    </item>
+
+</items>

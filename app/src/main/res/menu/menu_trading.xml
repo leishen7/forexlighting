@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+
+    <item android:id="@+id/whyforex"
+        android:title="外汇特点"
+        app:showAsAction="always"
+        android:orderInCategory="1"/>
+    <item android:id="@+id/knowforex"
+        android:title="外汇常识"
+        app:showAsAction="always"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/tradeforex"
+        android:title="投资逻辑"
+        app:showAsAction="always"
+        android:orderInCategory="3"/>
+    <item android:id="@+id/openAccount"
+        android:title="开户"
+        app:showAsAction="always"
+        android:orderInCategory="4"/>
+</menu>
+
